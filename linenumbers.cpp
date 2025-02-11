@@ -1,38 +1,44 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<iomanip>  // For std::setw
+#include<iomanip> 
 
 int main() {
-    std::ifstream inFile("mary.txt");  // Open file for reading
-    std::ofstream outFile("output.txt");  // Open file for writing
+    std::ifstream inFile("mary.txt");  // Open file to copy text 
+    std::ofstream outFile("output.txt");  // file for printing the mary text with line numbers
     std::string line;
-    int lineNumber = 1;  // Initialize line number
+    int lineNumber = 1;  //  line number
 
-    // Check if the input file opened successfully
+   
     if (!inFile) {
         std::cerr << "Error: Could not open the input file!" << std::endl;
-        return 1;  // Exit if the file can't be opened
+        return 1;  
     }
 
     // Check if the output file opened successfully
     if (!outFile) {
         std::cerr << "Error: Could not open the output file!" << std::endl;
-        return 1;  // Exit if the file can't be opened
+        return 1;  
     }
 
-    // Read each line from the input file
+    // Check if the input file is empty
+    if (inFile.peek() == std::ifstream::traits_type::eof()) {
+        std::cerr << "Error: The input file is empty!" << std::endl;
+        return 1;  // Exit if the file is empty
+    }
+
+    // Read lines from the input file
     while (std::getline(inFile, line)) {
-        // Write the line number and the content to the output file
+        // print the content to the output file
         outFile << std::setw(5) << lineNumber << ". " << line << std::endl;
-        lineNumber++;  // Increment the line number
+        lineNumber++;  // adding the line number
     }
 
-    // Close both files
+    // closing both files
     inFile.close();
     outFile.close();
 
-    std::cout << "The numbered lines have been written to 'output.txt'." << std::endl;
+    std::cout << "The lines have been printed to 'output.txt'." << std::endl;
 
     return 0;
 }

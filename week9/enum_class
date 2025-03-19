@@ -1,0 +1,34 @@
+#include <iostream>
+
+enum class Operation
+{
+    Add,
+    Subtract,
+    Multiply,
+    Divide
+};
+
+int main()
+{
+	Operation op = Operation::Add;
+	Operation op2 = Operation::Subtract;
+	Operation op3 = Operation::Multiply;
+	Operation op4 = Operation::Divide;
+	if (op == Operation::Add)
+	{
+		std::cout << "Add operation" << std::endl;
+	}
+	else if (op2 == Operation::Subtract)
+	{
+		std::cout << "Subtract operation" << std::endl;
+	}	
+	else if (op3==Operation::Multiply)
+	{
+		std::cout << "Multiply operation" << std::endl;
+	}
+	else if (op4==Operation::Divide)
+	{	
+		std::cout << "Divide operation" << std::endl;
+	}
+    return 0;
+}
